@@ -67,6 +67,11 @@ using namespace iter;
 //	cout << foo << "\n";
 //}
 
+int calcul(int valeur1, const function<int(int, int)>& operation, int valeur2)
+{
+	return operation(valeur1, valeur2);
+}
+
 void runLambdaExample() {
 	//vector<int> foo = {1, 2, 3, 4, 5};
 	//vector<int> bar = {10, 20, 30, 40, 50};
@@ -83,15 +88,11 @@ void runLambdaExample() {
 	//for (auto&& x : {-1, 0, 1, 5, 10})
 	//	cout << line(x) << " ";
 	//cout << "\n";
-
+	
+	function<int(int, int)> multiplier = [](int val1, int val2) {return val1 * val2; };
 	int a = 2;
-	auto myLambda = [a]() {
-		a = 10;
-		return a * a;
-	};
-	cout << a << endl;
-	cout << myLambda() << endl;
-	cout << a << endl;
+	int b = 12;
+	cout << calcul(a, multiplier, b);
 }
 
 
